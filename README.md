@@ -13,5 +13,5 @@ Enterprise-grade services website built with **Next.js (App Router)**, **TypeScr
 - Use **lint** for linting.
 
 ## Notes
-- Contact details are placeholders in `src/content/site.ts` (update email/phone when ready).
+- Contact details are placeholders in `src/content/site.ts` (update email/phone when ready). 
 - The contact form is client-side with a placeholder submit handler (replace with an API route / email integration later).
