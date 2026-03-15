@@ -16,7 +16,7 @@ export default function AboutPage() {
   return (
     <div>
       <PageHero
-        title="About Agadh"
+        title="About Agadh Software"
         subtitle="An engineering-first software development partner built for long-term ownership and enterprise reliability."
         cta={{ label: "Talk to Us", href: "/contact" }}
       />
