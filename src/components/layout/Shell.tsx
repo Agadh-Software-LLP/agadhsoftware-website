@@ -20,6 +20,97 @@ const homeMenu: readonly HomeMenuItem[] = [
   { key: "contact", href: "/contact", label: "Contact" },
 ];
 
+// ArisGlobal-inspired navigation with dark theme
+function ModernNav({ activeHref }: { activeHref: string }) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  return (
+    <>
+      {/* Main Navigation Bar */}
+      <nav className="sticky top-0 z-50 border-b border-white/10 bg-gradient-to-r from-slate-900 to-blue-950 backdrop-blur-md">
+        <Container>
+          <div className="flex h-16 items-center justify-between">
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-2 font-bold hover:opacity-90 transition-opacity">
+              <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-400 flex items-center justify-center shadow-lg shadow-cyan-400/30">
+                <span className="text-slate-900 text-lg font-bold">◆</span>
+              </div>
+              <span className="hidden sm:inline text-lg tracking-wide bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-transparent">Agadh Software</span>
+            </Link>
+
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center gap-1">
+              {homeMenu.map((item) => (
+                <Link
+                  key={item.key}
+                  href={item.href}
+                  className={`px-4 py-2 text-sm font-medium transition-all rounded-lg relative ${
+                    activeHref === item.href
+                      ? "text-cyan-300 bg-white/5 border-b-2 border-cyan-400"
+                      : "text-white/70 hover:text-white"
+                  }`}
+                >
+                  {item.label}
+                  {activeHref !== item.href && <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 transition-all group-hover:w-full"></span>}
+                </Link>
+              ))}
+            </div>
+
+            {/* Right side: CTA Button + Mobile Menu */}
+            <div className="flex items-center gap-4">
+              <Link
+                href="/contact"
+                className="hidden sm:inline-flex items-center justify-center rounded-full bg-cyan-400 px-6 py-2.5 text-sm font-bold text-slate-900 hover:bg-cyan-300 transition-all duration-200 shadow-lg hover:shadow-cyan-400/50"
+              >
+                Book a Demo
+              </Link>
+
+              {/* Mobile menu button */}
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="lg:hidden p-2 rounded-lg hover:bg-white/10 transition-colors text-white"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile Navigation Menu */}
+          {mobileMenuOpen && (
+            <div className="lg:hidden border-t border-white/10 py-4">
+              <div className="flex flex-col gap-2">
+                {homeMenu.map((item) => (
+                  <Link
+                    key={item.key}
+                    href={item.href}
+                    className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                      activeHref === item.href
+                        ? "text-cyan-300 bg-white/10"
+                        : "text-white/80 hover:text-white hover:bg-white/5"
+                    }`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+                <Link
+                  href="/contact"
+                  className="mt-2 flex items-center justify-center rounded-full bg-cyan-400 px-6 py-2 text-sm font-bold text-slate-900 hover:bg-cyan-300 transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Book a Demo
+                </Link>
+              </div>
+            </div>
+          )}
+        </Container>
+      </nav>
+    </>
+  );
+}
+
 function HeroContent() {
   return (
     <div className="min-w-0">
@@ -113,221 +204,19 @@ function RightPanel({ activeHref }: { activeHref: string }) {
 
 export function Shell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const router = useRouter();
-
-  const [open, setOpen] = useState(false);
   const [activeHref, setActiveHref] = useState<string>("/");
 
-  const isHomeRoute = pathname === "/";
-
-  const nav = useMemo<readonly NavItem[]>(() => {
-    return site.nav;
-  }, []);
-
   useEffect(() => {
-    // Disable browser scroll restoration so Home always lands at the banner.
-    // This avoids returning to a previous mid-page scroll position like "How we work".
-    if (typeof window !== "undefined") {
-      try {
-        window.history.scrollRestoration = "manual";
-      } catch {
-        // ignore
-      }
-    }
-  }, []);
-
-  useEffect(() => {
-    // Keep selection aligned with route.
     setActiveHref(pathname);
-
-    if (pathname === "/") {
-      // Do NOT force-scroll on every Home render.
-      // Only scroll to top when we explicitly request opening the menu from another page.
-      let shouldOpen = false;
-      try {
-        shouldOpen = sessionStorage.getItem("agadh:openMenuOnHome") === "1";
-        if (shouldOpen) sessionStorage.removeItem("agadh:openMenuOnHome");
-      } catch {
-        // ignore
-      }
-
-      if (shouldOpen) {
-        requestAnimationFrame(() => {
-          window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: "instant" as ScrollBehavior,
-          });
-        });
-        setOpen(true);
-        setActiveHref("/");
-      }
-
-      return;
-    }
-
-    setOpen(false);
-  }, [pathname, router]);
-
-  useEffect(() => {
-    if (!open) return;
-
-    let startY = window.scrollY;
-    const threshold = 12;
-
-    const onScroll = () => {
-      const delta = Math.abs(window.scrollY - startY);
-      if (delta >= threshold) {
-        setOpen(false);
-      }
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [open]);
-
-  const handleSelect = (href: string) => {
-    setActiveHref(href);
-    router.push(href);
-    setOpen(false);
-  };
-
-  const handleHamburgerClick = () => {
-    // Required UX: from any inner page, go to Home banner and open the panel there.
-    if (!isHomeRoute) {
-      try {
-        sessionStorage.setItem("agadh:openMenuOnHome", "1");
-      } catch {
-        // ignore
-      }
-      router.push("/");
-      return;
-    }
-
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
-
-    setOpen((v) => {
-      const next = !v;
-      if (next) setActiveHref("/");
-      return next;
-    });
-  };
+  }, [pathname]);
 
   return (
     <div className="min-h-dvh bg-white text-slate-950">
-      {/* Header */}
-      <header
-        className="sticky top-0 z-50 bg-gradient-to-b from-blue-950 to-slate-950 text-white"
-        style={{ height: "4rem" }}
-      >
-        <Container>
-          <div className="flex items-center justify-between py-4">
-            <Link
-              href="/"
-              scroll={false}
-              className="min-w-0"
-            >
-              <div className="truncate text-sm font-semibold tracking-tight text-white">
-                Agadh Software LLP
-              </div>
-              <div className="truncate text-xs font-medium text-white/75">
-                Build Deep. Build Right.
-              </div>
-            </Link>
-
-            <button
-              type="button"
-              onClick={handleHamburgerClick}
-              className="inline-flex items-center justify-center rounded-md border border-white/15 bg-white/5 px-3 py-2 text-sm font-semibold text-white hover:bg-white/10"
-              aria-label={open ? "Close menu" : "Open menu"}
-              aria-expanded={open}
-            >
-              <span className="relative h-4 w-5">
-                <span className="absolute left-0 top-0 block h-0.5 w-5 rounded bg-white" />
-                <span className="absolute left-0 top-1.5 block h-0.5 w-5 rounded bg-white" />
-                <span className="absolute left-0 top-3 block h-0.5 w-5 rounded bg-white" />
-              </span>
-            </button>
-          </div>
-        </Container>
-      </header>
-
-      {/* HOME BANNER AREA (only on /) */}
-      {isHomeRoute ? (
-        <section className="relative z-[45] bg-gradient-to-b from-blue-950 to-slate-950 text-white">
-          <Container>
-            <div className="py-6 sm:py-10">
-              <div className="relative min-h-[calc(100dvh-4rem)]">
-                {/* Slide-in left panel (Home only) */}
-                <div
-                  className={
-                    "fixed top-16 left-0 z-[60] w-72 max-w-[80vw] transition-transform duration-300 ease-out md:w-64 " +
-                    (open ? "translate-x-0" : "-translate-x-full")
-                  }
-                >
-                  <div className="h-[calc(100dvh-4rem)] rounded-r-xl border border-white/10 bg-slate-950/80 p-3 backdrop-blur">
-                    <nav className="space-y-1">
-                      {homeMenu.map((item) => {
-                        const active = activeHref === item.href;
-                        return (
-                          <Link
-                            key={item.key}
-                            href={item.href}
-                            onClick={() => {
-                              setActiveHref(item.href);
-                              setOpen(false);
-                            }}
-                            onMouseEnter={() => setActiveHref(item.href)}
-                            onFocus={() => setActiveHref(item.href)}
-                            className={
-                              "block w-full rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors " +
-                              (active
-                                ? "bg-white/15 text-white"
-                                : "text-white/85 hover:bg-white/10 hover:text-white")
-                            }
-                          >
-                            {item.label}
-                          </Link>
-                        );
-                      })}
-                    </nav>
-                  </div>
-                </div>
-
-                {/* Right content */}
-                <div
-                  className={
-                    "relative z-[55] min-h-[calc(100dvh-4rem)] transition-[margin-left,opacity,transform] duration-300 ease-out " +
-                    (open ? "md:ml-64 ml-0" : "ml-0")
-                  }
-                >
-                  <RightPanel activeHref={open ? activeHref : "/"} />
-                </div>
-
-                {/* Mobile: when open, show content below menu to avoid cramped width */}
-                {open ? (
-                  <div className="relative z-[55] mt-6 md:hidden">
-                    <RightPanel activeHref={activeHref} />
-                  </div>
-                ) : null}
-              </div>
-            </div>
-          </Container>
-        </section>
-      ) : null}
+      {/* Modern Navigation Bar */}
+      <ModernNav activeHref={activeHref} />
 
       {/* Page content */}
-      <div className={open ? "relative z-[30]" : ""}>{children}</div>
-
-      {/* Click-away backdrop: keep BEHIND interactive UI so it doesn't swallow clicks */}
-      {open ? (
-        <button
-          type="button"
-          aria-label="Close menu"
-          className="fixed inset-0 z-20 bg-black/20"
-          onClick={() => setOpen(false)}
-        />
-      ) : null}
+      <main>{children}</main>
     </div>
   );
 }
