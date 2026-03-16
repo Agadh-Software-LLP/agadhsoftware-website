@@ -17,8 +17,8 @@ function CtaLink({ cta }: { cta: Cta }) {
   const variant = cta.variant ?? "primary";
   const className =
     variant === "secondary"
-      ? "inline-flex items-center justify-center rounded-md border border-white/30 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white hover:bg-white/10"
-      : "inline-flex items-center justify-center rounded-md bg-white px-4 py-2.5 text-sm font-semibold text-blue-950 hover:bg-slate-100";
+      ? "inline-flex items-center justify-center rounded-lg border-2 border-white bg-white/5 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-all duration-200"
+      : "inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 text-sm font-semibold text-blue-950 hover:bg-slate-100 shadow-md hover:shadow-lg transition-all duration-200";
 
   return (
     <Link href={cta.href} className={className}>
@@ -39,42 +39,47 @@ export function PageHero({
 
   if (variant === "full") {
     return (
-      <section className="border-b border-slate-200 bg-gradient-to-b from-blue-950 to-slate-950 text-white">
+      <section className="relative border-b border-slate-200/50 bg-gradient-to-b from-blue-950 via-slate-950 to-slate-950 text-white">
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          <div className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-blue-900/40 blur-3xl" />
+          <div className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-blue-900/20 blur-3xl" />
+        </div>
+
         <Container>
-          <div className="py-14 sm:py-20">
+          <div className="py-16 sm:py-24">
             <div className="max-w-3xl">
               {eyebrow ? (
-                <div className="text-sm font-semibold tracking-wide text-white/70">
+                <div className="inline-block rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white/80">
                   {eyebrow}
                 </div>
               ) : null}
-              <h1 className="mt-3 whitespace-pre-line text-3xl font-semibold tracking-tight sm:text-5xl">
+              <h1 className="mt-4 whitespace-pre-line text-4xl font-bold tracking-tight sm:text-6xl">
                 {title}
               </h1>
-              <p className="mt-4 text-base leading-relaxed text-white/80 sm:text-lg">
+              <p className="mt-5 text-lg leading-relaxed text-white/80 sm:text-xl">
                 {subtitle}
               </p>
 
               {resolvedCtas.length > 0 ? (
-                <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+                <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                   {resolvedCtas.map((c) => (
                     <CtaLink key={c.href + c.label} cta={c} />
                   ))}
                 </div>
               ) : null}
 
-              <div className="mt-10 grid gap-3 rounded-xl border border-white/10 bg-white/5 p-5 text-sm text-white/80 sm:grid-cols-3">
+              <div className="mt-12 grid gap-4 rounded-xl border border-white/10 bg-white/5 p-6 text-sm text-white/80 sm:grid-cols-3 backdrop-blur">
                 <div>
                   <div className="font-semibold text-white">Correctness</div>
-                  <div className="mt-1">Strong data & workflow foundations.</div>
+                  <div className="mt-2">Strong data & workflow foundations.</div>
                 </div>
                 <div>
                   <div className="font-semibold text-white">Security</div>
-                  <div className="mt-1">Access control and auditability.</div>
+                  <div className="mt-2">Access control and auditability.</div>
                 </div>
                 <div>
                   <div className="font-semibold text-white">Ownership</div>
-                  <div className="mt-1">End-to-end delivery and maintenance.</div>
+                  <div className="mt-2">End-to-end delivery and maintenance.</div>
                 </div>
               </div>
             </div>
@@ -85,28 +90,35 @@ export function PageHero({
   }
 
   return (
-    <section className="border-b border-slate-200 bg-slate-50">
+    <section className="relative border-b border-slate-200 bg-gradient-to-br from-slate-50 to-white">
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-gradient-to-br from-blue-50 to-transparent blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-gradient-to-tr from-blue-50 to-transparent blur-3xl" />
+      </div>
+
       <Container>
-        <div className="py-12 sm:py-16">
+        <div className="py-16 sm:py-24">
           {eyebrow ? (
-            <div className="text-sm font-semibold text-blue-900">{eyebrow}</div>
+            <div className="inline-block rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-blue-900">
+              {eyebrow}
+            </div>
           ) : null}
-          <h1 className="mt-2 max-w-3xl text-3xl font-semibold tracking-tight text-slate-950 sm:text-5xl">
+          <h1 className="mt-4 max-w-3xl text-3xl font-bold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
             {title}
           </h1>
-          <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg">
+          <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
             {subtitle}
           </p>
           {resolvedCtas.length > 0 ? (
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               {resolvedCtas.map((c) => (
                 <Link
                   key={c.href + c.label}
                   href={c.href}
                   className={
                     (c.variant ?? "primary") === "secondary"
-                      ? "inline-flex items-center justify-center rounded-md border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-900 hover:border-slate-400"
-                      : "inline-flex items-center justify-center rounded-md bg-blue-900 px-4 py-2.5 text-sm font-semibold text-white hover:bg-blue-950"
+                      ? "inline-flex items-center justify-center rounded-lg border-2 border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 hover:border-slate-400 hover:bg-slate-50 transition-all duration-200"
+                      : "inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-blue-900 to-blue-800 px-6 py-3 text-sm font-semibold text-white hover:from-blue-950 hover:to-blue-900 shadow-lg hover:shadow-xl transition-all duration-200"
                   }
                 >
                   {c.label}
