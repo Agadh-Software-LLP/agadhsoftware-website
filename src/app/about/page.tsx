@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { PageHero } from "@/components/sections/PageHero";
 import { Container } from "@/components/layout/Container";
 import { SectionHeading } from "@/components/sections/SectionHeading";
 import { FeatureGrid } from "@/components/sections/FeatureGrid";
 import { site } from "@/content/site";
+import { owners } from "@/content/owners";
 
 export const metadata: Metadata = {
   title: "About",
@@ -66,6 +68,54 @@ export default function AboutPage() {
                 },
               ]}
             />
+
+            <div className="mt-12">
+              <SectionHeading
+                eyebrow="Leadership"
+                title="Meet the owners"
+                description="A small team with high ownership — we stay close to delivery and accountable for outcomes."
+              />
+
+              <div className="mt-10 grid gap-6 md:grid-cols-3">
+                {owners.map((owner) => (
+                  <div
+                    key={owner.name}
+                    className="rounded-2xl border border-slate-200 bg-white p-6"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full bg-slate-100 ring-1 ring-slate-200">
+                        {owner.imageSrc ? (
+                          <Image
+                            src={owner.imageSrc}
+                            alt={owner.name}
+                            fill
+                            sizes="56px"
+                            className="object-cover"
+                          />
+                        ) : (
+                          <div className="flex h-full w-full items-center justify-center text-sm font-semibold text-slate-700">
+                            {owner.name.slice(0, 1).toUpperCase()}
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="min-w-0">
+                        <div className="text-sm font-semibold text-slate-950">
+                          {owner.name}
+                        </div>
+                        <div className="mt-0.5 text-xs font-medium text-slate-600">
+                          {owner.role}
+                        </div>
+                      </div>
+                    </div>
+
+                    <p className="mt-4 text-sm leading-relaxed text-slate-600">
+                      {owner.bio}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </Container>
       </section>

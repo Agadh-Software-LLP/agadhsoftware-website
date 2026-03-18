@@ -6,7 +6,7 @@ export const site = {
   description:
     "Enterprise-grade software engineering partner for custom software development, end-to-end project delivery, and long-term maintenance.",
   contact: {
-    email: "contact@agadhsoft.com",
+    email: "support@agadhsoft.com",
     phone: "+91-XXXXXXXXXX",
   },
   nav: [

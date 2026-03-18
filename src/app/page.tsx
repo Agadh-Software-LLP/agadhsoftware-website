@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { InfiniteCarousel } from "@/components/sections/InfiniteCarousel";
 import { motion } from "framer-motion";
@@ -17,7 +18,7 @@ export default function Home() {
         </div>
 
         <Container>
-          <div className="py-24 sm:py-32 lg:py-40">
+          <div className="py-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Left content */}
               <div className="max-w-2xl">
@@ -65,7 +66,7 @@ export default function Home() {
       </section>
 
       {/* Trusted Partner Section */}
-      <section className="bg-white py-20 sm:py-24">
+      <section className="bg-white py-16 sm:py-20">
         <Container>
           <div className="flex flex-col items-center justify-center gap-12">
             <motion.h3
@@ -74,7 +75,7 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               className="text-xl sm:text-2xl text-slate-700 text-center font-medium"
             >
-              Agadh Solutions is trusted by industry leaders:
+              Agadh Software is trusted by industry leaders:
             </motion.h3>
 
             {/* Infinite Scrolling Carousel */}
@@ -91,7 +92,7 @@ export default function Home() {
       </section>
 
       {/* Core Services Section */}
-      <section className="py-20 sm:py-28 bg-white">
+      <section className="py-16 sm:py-24 bg-white">
         <Container>
           <div className="max-w-2xl mx-auto text-center mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
@@ -138,7 +139,7 @@ export default function Home() {
       </section>
 
       {/* Featured Project Section */}
-      <section className="py-20 sm:py-28 bg-gradient-to-b from-slate-50 to-white">
+      <section className="py-16 sm:py-24 bg-gradient-to-b from-slate-50 to-white">
         <Container>
           <div className="max-w-2xl mx-auto text-center mb-16">
             <span className="inline-block text-xs font-semibold text-cyan-700 bg-cyan-100 px-4 py-2 rounded-full mb-4">
@@ -178,10 +179,21 @@ export default function Home() {
                   View Full Case Study →
                 </Link>
               </div>
-              <div className="bg-gradient-to-br from-blue-50 to-slate-50 rounded-lg p-8 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-6xl mb-4">�</div>
-                  <p className="text-slate-600 text-sm">Enterprise-grade CRP platform for modern fintech</p>
+              <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-sm">
+                <div className="relative aspect-[16/9] w-full bg-gradient-to-br from-blue-50 to-slate-50">
+                  <Image
+                    src="/logos/kodachchadri_crm.png"
+                    alt="Kodachadri Chits"
+                    fill
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    className="object-contain p-6 sm:p-8"
+                    priority
+                  />
+                </div>
+                <div className="border-t border-slate-200 bg-white/70 px-4 py-3 text-center">
+                  <p className="text-sm leading-relaxed text-slate-600">
+                    Enterprise-grade CRP platform for modern fintech
+                  </p>
                 </div>
               </div>
             </div>
@@ -190,7 +202,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-20 sm:py-28 bg-white">
+      <section className="py-16 sm:py-24 bg-white">
         <Container>
           <div className="max-w-2xl mx-auto text-center mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
@@ -223,7 +235,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-20 sm:py-28 bg-gradient-to-r from-blue-950 via-blue-900 to-teal-900 text-white overflow-hidden">
+      <section className="relative py-16 sm:py-24 bg-gradient-to-r from-blue-950 via-blue-900 to-teal-900 text-white overflow-hidden">
         <div className="absolute inset-0 -z-10 opacity-40">
           <div className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-teal-500/20 blur-3xl" />
           <div className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-cyan-400/10 blur-3xl" />
