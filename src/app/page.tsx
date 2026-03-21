@@ -138,62 +138,110 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* Featured Project Section */}
+      {/* Featured Projects Section */}
       <section className="py-16 sm:py-24 bg-gradient-to-b from-slate-50 to-white">
         <Container>
           <div className="max-w-2xl mx-auto text-center mb-16">
             <span className="inline-block text-xs font-semibold text-cyan-700 bg-cyan-100 px-4 py-2 rounded-full mb-4">
-              ⭐ Featured Project
+              ⭐ Our Products &amp; Projects
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900">
-              Kodachadri Chits — CRP Platform
+              Built with purpose, delivered with care
             </h2>
             <p className="mt-4 text-lg text-slate-600">
-              A core platform initiative focusing on scalability, security, auditability, and operational clarity.
+              Real-world systems we&apos;ve designed, built, and own end-to-end.
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-10 lg:p-12">
-              <div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-4">
-                  Building the right platform
-                </h3>
-                <p className="text-slate-600 leading-relaxed mb-6">
-                  Planning and building a full CRP (Core business platform) for chit operations — with an engineering-driven approach to correctness and long-term evolution. Delivered with emphasis on user experience, data integrity, and operational excellence.
-                </p>
-                <ul className="space-y-3 mb-8">
-                  {["End-to-end ownership", "Scalable architecture", "Data integrity focus"].map(
-                    (item, i) => (
-                      <li key={i} className="flex gap-3 text-slate-600">
-                        <span className="text-cyan-600 font-bold">✓</span>
-                        {item}
-                      </li>
-                    )
-                  )}
-                </ul>
-                <Link
-                  href="/case-study/kodachadri-chits-crp"
-                  className="inline-flex items-center gap-2 text-cyan-600 font-bold hover:text-cyan-700 transition-colors"
-                >
-                  View Full Case Study →
-                </Link>
-              </div>
-              <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-sm">
-                <div className="relative aspect-[16/9] w-full bg-gradient-to-br from-blue-50 to-slate-50">
-                  <Image
-                    src="/logos/kodachchadri_crm.png"
-                    alt="Kodachadri Chits"
-                    fill
-                    sizes="(min-width: 768px) 50vw, 100vw"
-                    className="object-contain p-6 sm:p-8"
-                    priority
-                  />
-                </div>
-                <div className="border-t border-slate-200 bg-white/70 px-4 py-3 text-center">
-                  <p className="text-sm leading-relaxed text-slate-600">
-                    Enterprise-grade CRP platform for modern fintech
+          <div className="space-y-12">
+            {/* Smart Auto Wash */}
+            <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-10 lg:p-12">
+                <div>
+                  <div className="inline-flex items-center gap-2 text-xs font-semibold text-cyan-700 bg-cyan-100 px-3 py-1 rounded-full mb-4">
+                    🚗 Smart App
+                  </div>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-4">
+                    Smart Auto Wash
+                  </h3>
+                  <p className="text-slate-600 leading-relaxed mb-6">
+                    A full-featured mobile and web application for modern car wash businesses — streamlining bookings, real-time status tracking, staff management, and secure payment processing in one integrated platform.
                   </p>
+                  <ul className="space-y-3 mb-8">
+                    {["Online booking & slot management", "Real-time wash status updates", "Revenue analytics & reporting"].map(
+                      (item, i) => (
+                        <li key={i} className="flex gap-3 text-slate-600">
+                          <span className="text-cyan-600 font-bold">✓</span>
+                          {item}
+                        </li>
+                      )
+                    )}
+                  </ul>
+                  <Link
+                    href="/case-study/smart-auto-wash"
+                    className="inline-flex items-center gap-2 text-cyan-600 font-bold hover:text-cyan-700 transition-colors"
+                  >
+                    View App Details →
+                  </Link>
+                </div>
+                <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-sm flex items-center justify-center">
+                  <div className="w-full bg-gradient-to-br from-cyan-50 to-blue-50 flex items-center justify-center py-12">
+                    <div className="text-center p-8">
+                      <div className="text-7xl mb-4">🚗</div>
+                      <p className="text-slate-600 font-semibold text-lg">Smart Auto Wash</p>
+                      <p className="text-slate-500 text-sm mt-1">Car Wash Management Platform</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Kodachadri Chits CRP */}
+            <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-10 lg:p-12">
+                <div>
+                  <div className="inline-flex items-center gap-2 text-xs font-semibold text-blue-700 bg-blue-100 px-3 py-1 rounded-full mb-4">
+                    🏦 Enterprise Platform
+                  </div>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-4">
+                    Kodachadri Chits — CRP Platform
+                  </h3>
+                  <p className="text-slate-600 leading-relaxed mb-6">
+                    A core platform initiative focusing on scalability, security, auditability, and operational clarity. Delivered with emphasis on user experience, data integrity, and operational excellence.
+                  </p>
+                  <ul className="space-y-3 mb-8">
+                    {["End-to-end ownership", "Scalable architecture", "Data integrity focus"].map(
+                      (item, i) => (
+                        <li key={i} className="flex gap-3 text-slate-600">
+                          <span className="text-cyan-600 font-bold">✓</span>
+                          {item}
+                        </li>
+                      )
+                    )}
+                  </ul>
+                  <Link
+                    href="/case-study/kodachadri-chits-crp"
+                    className="inline-flex items-center gap-2 text-cyan-600 font-bold hover:text-cyan-700 transition-colors"
+                  >
+                    View Full Case Study →
+                  </Link>
+                </div>
+                <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-sm">
+                  <div className="relative aspect-[16/9] w-full bg-gradient-to-br from-blue-50 to-slate-50">
+                    <Image
+                      src="/logos/kodachchadri_crm.png"
+                      alt="Kodachadri Chits"
+                      fill
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                      className="object-contain p-6 sm:p-8"
+                      priority
+                    />
+                  </div>
+                  <div className="border-t border-slate-200 bg-white/70 px-4 py-3 text-center">
+                    <p className="text-sm leading-relaxed text-slate-600">
+                      Enterprise-grade CRP platform for modern fintech
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -215,7 +263,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
-              { num: "1", label: "Active Project" },
+              { num: "2", label: "Active Projects" },
               { num: "5", label: "Team Members" },
               { num: "100%", label: "Client Satisfaction" },
               { num: "∞", label: "Commitment" },
@@ -247,7 +295,7 @@ export default function Home() {
               Ready to build something impactful?
             </h2>
             <p className="text-lg text-slate-200 mb-10">
-              Tell us about your next project. We'll respond with a clear plan and a pragmatic path to delivery.
+              Tell us about your next project. We&apos;ll respond with a clear plan and a pragmatic path to delivery.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
