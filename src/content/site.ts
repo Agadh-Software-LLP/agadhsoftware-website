@@ -15,6 +15,7 @@ export const site = {
     { href: "/services", label: "Services" },
     { href: "/industries", label: "Industries" },
     { href: "/case-study/kodachadri-chits-crp", label: "Case Study" },
+    { href: "/case-study/smart-auto-wash", label: "Smart Auto Wash" },
     { href: "/why-agadh", label: "Why Agadh" },
     { href: "/tech-stack", label: "Tech Stack" },
     { href: "/contact", label: "Contact" },

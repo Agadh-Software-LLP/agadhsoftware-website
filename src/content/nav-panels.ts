@@ -59,6 +59,17 @@ export const navPanels: Record<string, NavPanel> = {
     ],
     cta: { label: "Read case study", href: "/case-study/kodachadri-chits-crp" },
   },
+  "/case-study/smart-auto-wash": {
+    title: "Smart Auto Wash",
+    description:
+      "A full-featured car wash management app — bookings, payments, staff scheduling, and real-time tracking.",
+    bullets: [
+      "Online booking & slot management",
+      "Real-time wash status updates",
+      "Revenue analytics & reporting",
+    ],
+    cta: { label: "View app details", href: "/case-study/smart-auto-wash" },
+  },
   "/why-agadh": {
     title: "Why Agadh",
     description:
