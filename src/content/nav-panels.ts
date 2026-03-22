@@ -70,6 +70,20 @@ export const navPanels: Record<string, NavPanel> = {
     ],
     cta: { label: "View app details", href: "/case-study/smart-auto-wash" },
   },
+  "/case-study/smart-car-wash-platform": {
+    title: "Smart Car Wash Platform",
+    description:
+      "AI-powered operations platform built and running in production — plate detection, live queues, anomaly alerts, and WhatsApp campaigns.",
+    bullets: [
+      "AI number plate detection",
+      "Revenue leakage analytics",
+      "WhatsApp re-engagement campaigns",
+    ],
+    cta: {
+      label: "View platform details",
+      href: "/case-study/smart-car-wash-platform",
+    },
+  },
   "/why-agadh": {
     title: "Why Agadh",
     description:

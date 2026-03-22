@@ -196,6 +196,50 @@ export default function Home() {
               </div>
             </div>
 
+            {/* Smart Car Wash Platform — AI */}
+            <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-10 lg:p-12">
+                <div>
+                  <div className="inline-flex items-center gap-2 text-xs font-semibold text-violet-700 bg-violet-100 px-3 py-1 rounded-full mb-4">
+                    🤖 AI Platform
+                  </div>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-4">
+                    Smart Car Wash Platform
+                  </h3>
+                  <p className="text-slate-600 leading-relaxed mb-6">
+                    An AI-first operations platform built and running in production — number plate detection, live queue management, revenue leakage analytics, anomaly alerts, and WhatsApp re-engagement campaigns.
+                  </p>
+                  <ul className="space-y-3 mb-8">
+                    {[
+                      "AI number plate detection & smart entry",
+                      "Live queue & operational anomaly alerts",
+                      "Revenue leakage analytics & WhatsApp campaigns",
+                    ].map((item, i) => (
+                      <li key={i} className="flex gap-3 text-slate-600">
+                        <span className="text-violet-600 font-bold">✓</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href="/case-study/smart-car-wash-platform"
+                    className="inline-flex items-center gap-2 text-violet-600 font-bold hover:text-violet-700 transition-colors"
+                  >
+                    View Platform Details →
+                  </Link>
+                </div>
+                <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-sm flex items-center justify-center">
+                  <div className="w-full bg-gradient-to-br from-violet-50 to-blue-50 flex items-center justify-center py-12">
+                    <div className="text-center p-8">
+                      <div className="text-7xl mb-4">🧠</div>
+                      <p className="text-slate-600 font-semibold text-lg">Smart Car Wash Platform</p>
+                      <p className="text-slate-500 text-sm mt-1">AI-Powered Operations</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* Kodachadri Chits CRP */}
             <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-10 lg:p-12">
