@@ -16,6 +16,7 @@ export const site = {
     { href: "/industries", label: "Industries" },
     { href: "/case-study/kodachadri-chits-crp", label: "Case Study" },
     { href: "/case-study/smart-auto-wash", label: "Smart Auto Wash" },
+    { href: "/case-study/smart-car-wash-platform", label: "Smart Car Wash Platform" },
     { href: "/why-agadh", label: "Why Agadh" },
     { href: "/tech-stack", label: "Tech Stack" },
     { href: "/contact", label: "Contact" },
