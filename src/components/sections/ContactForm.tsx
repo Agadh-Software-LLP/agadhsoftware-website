@@ -21,17 +21,17 @@ const intentPresets = {
   demo: {
     label: "Demo request detected",
     message:
-      "Hi Agadh team, I would like a live demo of ParentConnect for our school. Please share available time slots this week.",
+      "Hi Agadh team, I would like a live demo of AgadhEducare for our school. Please share available time slots this week.",
   },
   proposal: {
     label: "Proposal request detected",
     message:
-      "Hi Agadh team, please share a proposal for ParentConnect based on our school size, required modules, and implementation timeline.",
+      "Hi Agadh team, please share a proposal for AgadhEducare based on our school size, required modules, and implementation timeline.",
   },
   architect: {
     label: "Architecture review request detected",
     message:
-      "Hi Agadh team, we want to discuss architecture, integration approach, and rollout strategy for ParentConnect.",
+      "Hi Agadh team, we want to discuss architecture, integration approach, and rollout strategy for AgadhEducare.",
   },
 } as const;
 
