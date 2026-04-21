@@ -12,8 +12,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 // Basic rate-limit: track submission timestamps per IP in memory.
 // For production scale, replace with Redis or Upstash.
 const ipTimestamps = new Map<string, number>();
@@ -28,9 +26,13 @@ function getRealIp(req: NextRequest): string {
 }
 
 export async function POST(req: NextRequest) {
-  if (!process.env.RESEND_API_KEY) {
+  const apiKey = process.env.RESEND_API_KEY;
+
+  if (!apiKey) {
     return NextResponse.json({ success: false, error: 'Email not configured' }, { status: 503 });
   }
+
+  const resend = new Resend(apiKey);
 
   // Rate limiting
   const ip = getRealIp(req);
