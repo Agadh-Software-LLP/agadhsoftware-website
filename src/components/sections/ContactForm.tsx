@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 type FormState = {
   name: string;
@@ -16,11 +17,68 @@ const initial: FormState = {
   message: "",
 };
 
+const intentPresets = {
+  demo: {
+    label: "Demo request detected",
+    message:
+      "Hi Agadh team, I would like a live demo of ParentConnect for our school. Please share available time slots this week.",
+  },
+  proposal: {
+    label: "Proposal request detected",
+    message:
+      "Hi Agadh team, please share a proposal for ParentConnect based on our school size, required modules, and implementation timeline.",
+  },
+  architect: {
+    label: "Architecture review request detected",
+    message:
+      "Hi Agadh team, we want to discuss architecture, integration approach, and rollout strategy for ParentConnect.",
+  },
+} as const;
+
+type ContactIntent = keyof typeof intentPresets;
+
+function resolveIntent(value: string | null): ContactIntent | null {
+  if (!value) return null;
+  const normalized = value.toLowerCase();
+
+  if (normalized === "demo" || normalized === "proposal" || normalized === "architect") {
+    return normalized;
+  }
+
+  return null;
+}
+
 export function ContactForm() {
+  const searchParams = useSearchParams();
+  const intent = useMemo(
+    () => resolveIntent(searchParams.get("intent")),
+    [searchParams]
+  );
+  const preset = intent ? intentPresets[intent] : null;
+
   const [data, setData] = useState<FormState>(initial);
   const [status, setStatus] = useState<
     "idle" | "submitting" | "success" | "error"
   >("idle");
+
+  useEffect(() => {
+    if (!preset) return;
+
+    setData((prev) => {
+      const untouched =
+        prev.name.trim().length === 0 &&
+        prev.company.trim().length === 0 &&
+        prev.email.trim().length === 0 &&
+        prev.message.trim().length === 0;
+
+      if (!untouched) return prev;
+
+      return {
+        ...prev,
+        message: preset.message,
+      };
+    });
+  }, [preset]);
 
   const canSubmit = useMemo(() => {
     return (
@@ -37,11 +95,16 @@ export function ContactForm() {
     try {
       setStatus("submitting");
 
-      // Placeholder handler. Replace with API route / email integration later.
-      await new Promise((r) => setTimeout(r, 700));
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) throw new Error("send_failed");
 
       setStatus("success");
-      setData(initial);
+      setData(preset ? { ...initial, message: preset.message } : initial);
     } catch {
       setStatus("error");
     }
@@ -49,6 +112,17 @@ export function ContactForm() {
 
   return (
     <form onSubmit={onSubmit} className="space-y-5">
+      {preset ? (
+        <div className="rounded-md border border-blue-200 bg-blue-50 px-4 py-3">
+          <div className="text-xs font-semibold uppercase tracking-wider text-blue-900">
+            {preset.label}
+          </div>
+          <p className="mt-1 text-sm text-slate-700">
+            We prefilled your message to speed up this request.
+          </p>
+        </div>
+      ) : null}
+
       <div className="grid gap-5 sm:grid-cols-2">
         <Field
           label="Name"

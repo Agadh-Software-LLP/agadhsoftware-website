@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { InfiniteCarousel } from "@/components/sections/InfiniteCarousel";
+import { schoolProjectsContent } from "@/content/school-project-features";
 import { motion } from "framer-motion";
 
 export default function Home() {
@@ -35,7 +36,7 @@ export default function Home() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
-                    href="/contact"
+                    href="/contact?intent=demo"
                     className="inline-flex items-center justify-center rounded-full bg-cyan-400 px-8 py-3 text-sm font-bold text-slate-900 hover:bg-cyan-300 shadow-lg hover:shadow-cyan-400/50 transition-all duration-200"
                   >
                     Book a Demo
@@ -134,6 +135,64 @@ export default function Home() {
                 </p>
               </div>
             ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* School Projects Teaser Section */}
+      <section className="py-16 sm:py-24 bg-gradient-to-b from-blue-50 to-white">
+        <Container>
+          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-10 items-start">
+            <div>
+              <span className="inline-block text-xs font-semibold text-blue-900 bg-blue-100 px-4 py-2 rounded-full mb-5">
+                {schoolProjectsContent.teaser.eyebrow}
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900">
+                {schoolProjectsContent.teaser.title}
+              </h2>
+              <p className="mt-5 text-base sm:text-lg text-slate-600 leading-relaxed max-w-3xl">
+                {schoolProjectsContent.teaser.description}
+              </p>
+
+              <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+                {schoolProjectsContent.teaser.highlights.map((item) => (
+                  <li
+                    key={item}
+                    className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-8 flex flex-col sm:flex-row gap-4">
+                <Link
+                  href={schoolProjectsContent.teaser.primaryCta.href}
+                  className="inline-flex items-center justify-center rounded-full bg-blue-900 px-7 py-3 text-sm font-semibold text-white hover:bg-blue-950 shadow-lg transition-all duration-200"
+                >
+                  {schoolProjectsContent.teaser.primaryCta.label}
+                </Link>
+                <Link
+                  href={schoolProjectsContent.teaser.secondaryCta.href}
+                  className="inline-flex items-center justify-center rounded-full border-2 border-blue-900/30 bg-white px-7 py-3 text-sm font-semibold text-blue-950 hover:border-blue-900 hover:bg-blue-50 transition-all duration-200"
+                >
+                  {schoolProjectsContent.teaser.secondaryCta.label}
+                </Link>
+              </div>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+              {schoolProjectsContent.proofMetrics.map((metric) => (
+                <div
+                  key={metric.label}
+                  className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
+                >
+                  <div className="text-2xl font-bold text-blue-950">{metric.value}</div>
+                  <p className="mt-2 text-sm font-semibold text-slate-900">{metric.label}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{metric.detail}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </Container>
       </section>
@@ -343,7 +402,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/contact"
+                href="/contact?intent=demo"
                 className="inline-flex items-center justify-center rounded-full bg-cyan-400 px-8 py-3 text-sm font-bold text-slate-900 hover:bg-cyan-300 shadow-lg hover:shadow-cyan-400/50 transition-all duration-200"
               >
                 Book a Demo</Link>

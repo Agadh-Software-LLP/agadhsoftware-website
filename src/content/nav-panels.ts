@@ -1,5 +1,3 @@
-import type { ReactNode } from "react";
-
 export type NavPanel = {
   title: string;
   description: string;
@@ -47,6 +45,17 @@ export const navPanels: Record<string, NavPanel> = {
       "Process automation",
     ],
     cta: { label: "View industries", href: "/industries" },
+  },
+  "/school-projects": {
+    title: "School Projects",
+    description:
+      "Unified school operations platform with AI-driven insights, parent communication automation, and compliance-ready governance.",
+    bullets: [
+      "Academic and behavior risk intelligence",
+      "Attendance, PTM, homework, and fee automation",
+      "Transport, hostel, and audit visibility",
+    ],
+    cta: { label: "Book Demo", href: "/contact?intent=demo" },
   },
   "/case-study/kodachadri-chits-crp": {
     title: "Case Study",
