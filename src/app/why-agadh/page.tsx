@@ -92,7 +92,7 @@ export default function WhyAgadhPage() {
                 <p className="mt-3 text-sm leading-relaxed text-slate-600">
                   We share a delivery plan early, run regular demos, and keep
                   architecture and operational readiness visible. You always
-                  know what's shipped, what's next, and what risks exist — with
+                  know what&apos;s shipped, what&apos;s next, and what risks exist — with
                   practical mitigation.
                 </p>
               </div>
