@@ -150,37 +150,18 @@ export default function SchoolProjectsPage() {
 
       <section className="border-y border-slate-200 bg-white">
         <Container>
-          <div className="grid gap-6 py-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-700">Trust</p>
-              <h2 className="mt-2 text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl">
-                {schoolProjectsContent.trustBar.title}
-              </h2>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {schoolProjectsContent.trustBar.logos.map((logo) => (
-                  <span
-                    key={logo}
-                    className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-600"
-                  >
-                    {logo}
-                  </span>
-                ))}
-              </div>
+          <div className="grid gap-6 py-8 sm:grid-cols-3">
+            <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700">
+              <ShieldCheck className="h-4 w-4 text-blue-800" />
+              <span>{schoolProjectsContent.trustBar.badges[0]}</span>
             </div>
-
-            <div className="grid gap-2 sm:grid-cols-3 lg:grid-cols-1">
-              <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700">
-                <ShieldCheck className="h-4 w-4 text-blue-800" />
-                <span>{schoolProjectsContent.trustBar.badges[0]}</span>
-              </div>
-              <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700">
-                <CheckCircle2 className="h-4 w-4 text-blue-800" />
-                <span>{schoolProjectsContent.trustBar.badges[1]}</span>
-              </div>
-              <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700">
-                <LockKeyhole className="h-4 w-4 text-blue-800" />
-                <span>{schoolProjectsContent.trustBar.badges[2]}</span>
-              </div>
+            <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700">
+              <CheckCircle2 className="h-4 w-4 text-blue-800" />
+              <span>{schoolProjectsContent.trustBar.badges[1]}</span>
+            </div>
+            <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700">
+              <LockKeyhole className="h-4 w-4 text-blue-800" />
+              <span>{schoolProjectsContent.trustBar.badges[2]}</span>
             </div>
           </div>
         </Container>

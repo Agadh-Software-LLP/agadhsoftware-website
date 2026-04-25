@@ -511,7 +511,7 @@ export const schoolProjectsContent = {
       "Real-time transport and hostel safety workflows",
       "Audit-ready compliance and security visibility",
     ],
-    primaryCta: { label: "View School Projects", href: "/school-projects" },
+    primaryCta: { label: "Explore EduCare", href: "/educare" },
     secondaryCta: { label: "Book Demo", href: "/contact?intent=demo" },
   },
   closing: {
