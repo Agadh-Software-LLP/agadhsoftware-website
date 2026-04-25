@@ -14,7 +14,7 @@ export const site = {
     { href: "/about", label: "About" },
     { href: "/services", label: "Services" },
     { href: "/industries", label: "Industries" },
-    { href: "/school-projects", label: "School Projects" },
+    { href: "/educare", label: "EduCare" },
     { href: "/case-study/kodachadri-chits-crp", label: "Case Study" },
     { href: "/case-study/smart-auto-wash", label: "Smart Auto Wash" },
     { href: "/case-study/smart-car-wash-platform", label: "Smart Car Wash Platform" },

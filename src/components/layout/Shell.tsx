@@ -12,7 +12,7 @@ const homeMenu: readonly HomeMenuItem[] = [
   { key: "home", href: "/", label: "Home" },
   { key: "services", href: "/services", label: "Services" },
   { key: "solutions", href: "/industries", label: "Solutions" },
-  { key: "school", href: "/school-projects", label: "School Projects" },
+  { key: "school", href: "/educare", label: "EduCare" },
   { key: "about", href: "/about", label: "About Us" },
   { key: "contact", href: "/contact", label: "Contact" },
 ];

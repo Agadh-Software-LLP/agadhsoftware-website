@@ -46,14 +46,14 @@ export const navPanels: Record<string, NavPanel> = {
     ],
     cta: { label: "View industries", href: "/industries" },
   },
-  "/school-projects": {
-    title: "School Projects",
+  "/educare": {
+    title: "Agadh EduCare",
     description:
-      "Unified school operations platform with AI-driven insights, parent communication automation, and compliance-ready governance.",
+      "Complete digital transformation platform for schools and colleges — connecting management, teachers, parents, and students in one place.",
     bullets: [
-      "Academic and behavior risk intelligence",
-      "Attendance, PTM, homework, and fee automation",
-      "Transport, hostel, and audit visibility",
+      "Web portal for management",
+      "Mobile app for parents and teachers",
+      "Daily visibility and faster communication",
     ],
     cta: { label: "Book Demo", href: "/contact?intent=demo" },
   },
