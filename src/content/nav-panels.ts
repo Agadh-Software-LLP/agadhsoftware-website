@@ -46,8 +46,8 @@ export const navPanels: Record<string, NavPanel> = {
     ],
     cta: { label: "View industries", href: "/industries" },
   },
-  "/school-projects": {
-    title: "School Projects",
+  "/educare": {
+    title: "EduCare",
     description:
       "Unified school operations platform with AI-driven insights, parent communication automation, and compliance-ready governance.",
     bullets: [
