@@ -1,8 +1,18 @@
 import type { ReactNode } from "react";
 
-export function Container({ children }: { children: ReactNode }) {
+type Gutter = "default" | "none";
+
+export function Container({
+  children,
+  gutter = "default",
+}: {
+  children: ReactNode;
+  gutter?: Gutter;
+}) {
+  const padding =
+    gutter === "none" ? "" : "px-4 sm:px-6 lg:px-8";
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div className={`mx-auto w-full max-w-6xl ${padding}`.trim()}>
       {children}
     </div>
   );

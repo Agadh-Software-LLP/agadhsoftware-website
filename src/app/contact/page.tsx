@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { PageHero } from "@/components/sections/PageHero";
 import { Container } from "@/components/layout/Container";
 import { SectionHeading } from "@/components/sections/SectionHeading";
@@ -58,7 +59,9 @@ export default function ContactPage() {
               </div>
 
               <div className="rounded-xl border border-slate-200 bg-white p-6">
-                <ContactForm />
+                <Suspense fallback={<div className="text-sm text-slate-600">Loading form…</div>}>
+                  <ContactForm />
+                </Suspense>
               </div>
             </div>
           </div>
